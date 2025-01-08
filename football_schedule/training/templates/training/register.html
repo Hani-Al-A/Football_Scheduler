@@ -1,0 +1,130 @@
+{% extends "training/layout.html" %}
+
+{% load static %}
+
+{% block body %}
+
+    <h3>Register</h3>
+
+    {% if message %}
+    <div class="message_container">
+        <div class="message">
+            <h5>{{ message }}</h5>
+        </div>
+    </div>
+    {% endif %}
+
+
+    {% if teams %}
+    <div class="mb-3">
+    <form method="POST" id="competitionForm">
+        {% csrf_token %}
+        <label for="competition">Competition:</label>
+        
+        <select class="form-control" id="competition_name" name="competition_id" onchange="this.form.submit()">
+            <option value="{{ selected_competition.id }}">{{ selected_competition.name }}</option>
+            {% for competition in competitions %}
+                {% if competition != selected_competition %} <!-- so that it does not repeat the selected option -->
+                    <option value="{{ competition.id }}">{{ competition.name }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+    </form>
+    </div>
+
+    {% if selected_team %}
+    <div class="mb-3">
+        <form method="POST" id="teamForm">
+            {% csrf_token %}
+            <input type="hidden" name="competition_id_in_teamForm" value="{{ selected_competition.id }}">
+            <label for="team_of_user">Team:</label>
+            <select class="form-control must_select" name="team_of_user" id="team_of_user" onchange="this.form.submit()">
+                <option value="{{ selected_team.name }}, {{ selected_team.id }}">{{ selected_team.name }}</option>
+                {% for team in teams %}
+                    {% if team.id != selected_team.id %}
+                    <option value="{{ team.name }}, {{ team.id }}">{{ team.name }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </form>
+    </div>
+    {% else %}
+    <div class="mb-3">
+        <form method="POST" id="teamForm">
+            {% csrf_token %}
+            <input type="hidden" name="competition_id_in_teamForm" value="{{ selected_competition.id }}">
+            <label for="team_of_user">Team:</label>
+            <select class="form-select form-control must_select" name="team_of_user" id="team_of_user" onchange="this.form.submit()">
+                <option value="">Select a team</option>
+                {% for team in teams %}
+                    <option value="{{ team.name }}, {{ team.id }}">{{ team.name }}</option>
+                {% endfor %}
+            </select>
+        </form>
+    </div>
+    {% endif %}
+
+    
+    <form action="{% url 'register' %}" id="afterTeamSelect" method="POST" style="display: none;">
+        {% csrf_token %}
+        <input type="hidden" name="user_time_zone" id="user_time_zone">
+        <input type="hidden" name="club" value="{{ selected_team.name }}, {{ selected_team.id }}" id="team">
+        <div class="mb-3">
+            <select class="form-select form-control must_select" id="job_title" name="is_coach" aria-label="Default select example">
+                <option value="none" selected>Select your job</option>
+                <option value="False">Player</option>
+                <option value="True">Coach</option>
+            </select>
+        </div>
+
+        <div class="register_details" style="display: none;">
+            <div class="mb-3">
+                <select class="form-select form-control must_select player_select" id="player" name="player" aria-label="Default select example" style="display: none;">
+                    <option value="none" selected>Select yourself</option>
+                    {% for player in squad %}
+                        <option value="{{ player.id }}">{{ player.name }}: {{ player.position }}</option>
+                    {% endfor %}
+                </select>
+                <select class="form-select form-control must_select coach_select" id="coach" name="coach" aria-label="Default select example" style="display: none;"> 
+                    <option value="none" selected>Select yourself</option>
+                    <option value="{{ coach.id }}">{{ coach.name }}</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <input class="form-control" type="text" name="username" placeholder="Username">
+            </div>
+            <div class="mb-3">
+                <input class="form-control" type="email" name="email" placeholder="Email Address">
+            </div>
+            <div class="mb-3">
+                <input class="form-control" type="password" name="password" placeholder="Password">
+            </div>
+            <div class="mb-3">
+                <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password">
+            </div>
+            <input class="btn btn-primary single_btn" type="submit" value="Register">
+        </div>
+    </form>
+    {% else %}
+    <form method="POST" id="competitionForm">
+        {% csrf_token %}
+        <label for="competition">Competition:</label>
+        
+        <select class="form-control" id="competition_name" name="competition_id" onchange="this.form.submit()">
+            <option value="">Select a competition</option>
+            {% for competition in competitions %}
+            <option value="{{ competition.id }}">{{ competition.name }}</option>
+            {% endfor %}
+        </select>
+    </form>
+
+    {% endif %}
+
+    <p></p>
+    Already have an account? <a href="{% url 'login' %}">Log In here.</a>
+
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'training/register.js' %}"></script>
+{% endblock %}

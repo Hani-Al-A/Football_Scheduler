@@ -1,0 +1,30 @@
+{% extends "training/layout.html" %}
+{% block body %}
+    {% if message %}
+    <div class="message_container">
+        <div class="message">
+            <h5>{{ message }}</h5>
+        </div>
+    </div>
+    {% endif %}
+    {% if drill %}
+        <h1 class="drill_title">{{ drill.name }}</h1>
+        <p>{{ drill.description }}</p>
+        <div class="d-flex justify-content-end">
+            <form method="post" action="{% url 'delete_drill' drill.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary single_btn justify-content-end">Delete drill</button>
+            </form>
+        </div>
+        {% if drill.video_url %}
+            <div class="ratio ratio-16x9">
+                <iframe  title="YouTube video"
+                        src="{{ drill.video_url }}" allowfullscreen>
+                </iframe>
+            </div>
+        {% endif %}
+    {% endif %}
+    <form action="{% url 'drill_library' %}">
+        <button type="submit" class="btn btn-primary single_btn">Back to drill library</button>
+    </form>
+{% endblock %}
