@@ -311,6 +311,7 @@ h1, h2, h3, h4, h5, h6 {
   background-color: transparent;
   border: none;
   display: none;
+  z-index: 3;
 }
 
 @media (max-width: 1000px) {
@@ -474,5 +475,7 @@ h1, h2, h3, h4, h5, h6 {
 #current_day:hover a {
   color: #101534 !important;
 }
-
+.infront{
+  z-index: 2;
+}
 /*# sourceMappingURL=styles.css.map */
