@@ -498,6 +498,8 @@ def sync_calendar(request, team_id):
     team_id = int(team_id)
     matches = get_matches(team_id)
     last_season_matches = matches[0]
+    print(last_season_matches)
+    print(len(last_season_matches))
     this_season_matches = matches[1]
     month_num = datetime.datetime.now().month
     year = datetime.datetime.now().year
@@ -564,8 +566,7 @@ def Update_or_Add_match(request, match):
             old_match.calendar2 = user_calendar
         elif (old_match.calendar2 != user_calendar) and (old_match.calendar is None):
             old_match.calendar = user_calendar
-        else:
-            return 
+
         #realistically only these can update for a match
         old_match.title = f"{home_team["name"]} vs {away_team["name"]}"
         old_match.status = match["status"]
