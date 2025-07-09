@@ -631,9 +631,15 @@ h1, h2, h3, h4, h5, h6 {
 #current_day:hover a {
   color: #101534 !important;
 }
+<<<<<<< HEAD
 
 .infront {
   z-index: 2;
 }
 
+=======
+.infront{
+  z-index: 2;
+}
+>>>>>>> 03c3377b37ed73ea987f9072e5a72b8c6b30ecb2
 /*# sourceMappingURL=styles.css.map */
