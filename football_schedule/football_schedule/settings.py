@@ -44,7 +44,6 @@ EMAIL_HOST_PASSWORD = #
 
 INSTALLED_APPS = [
     'training',
-    'django_crontab',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
