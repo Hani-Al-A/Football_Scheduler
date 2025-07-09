@@ -42,11 +42,9 @@
         <div class="vstack mx-auto d-flex justify-content-center">   
             <div class="d-flex justify-content-center text-center p-2">
                 <div class="competition_container">
-                    <center>
-                    <div class="p-2 img responsive comp_emblem">
+                    <div class="p-6 img responsive comp_emblem">
                         <img class="img-fluid img-thumbnail responsive emblem" src="{{ event.competition_emblem }}">
                     </div>
-                    </center>
                     <div class="stage">
                     {% if event.stage == "LAST_16" %}
                         <p>Round of 16</p>
@@ -70,10 +68,10 @@
                 </div>
 
             </div>
-            <div class="hstack gap-3 d-flex justify-content-center p-2">
-                <div class="p-2">
+            <div class="hstack gap-4 d-flex justify-content-center p-6">
+                <div class="p-6" >
                     <div class="vstack gap-3">
-                        <div class="p-2">
+                        <div class="p-4" id="onPhone">
                             <div class="img">
                             {% if event.home_team_crest %}
                                 {% if event.match_type == "Club" %}
@@ -86,7 +84,7 @@
                             {% endif %}
                             </div>
                         </div>
-                        <div class="p-2 d-flex justify-content-center">
+                        <div class="p-12 d-flex justify-content-center">
                             {% if event.home_team_name %}
                                 <p class="text-center team_name">{{ event.home_team_name }}</p>
                             {% else %}
@@ -95,7 +93,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="p-2 text-center">
+                <div class="p-4 text-center" id="onPhone">
                     {% if event.status != "SCHEDULED" %}
                         {% timezone user_timezone %}
                             <h2 class="matchInfoHeader"> {{ local_time }} </h2>
@@ -134,9 +132,9 @@
                     {% endif %}
                     <h4 class="matchInfoHeader">Matchday {{ event.match_matchday }}</h4>
                 </div>
-                <div class="p-2">
+                <div class="p-6">
                     <div class="vstack gap-3 text-center">
-                        <div class="p-2">
+                        <div class="p-4" id="onPhone">
                             <div class="img">
                             {% if event.away_team_crest %}
                                 {% if event.match_type == "Club" %}
@@ -149,7 +147,7 @@
                             {% endif %}
                             </div>
                         </div>
-                        <div class="p-2 d-flex justify-content-center">
+                        <div class="p-12 d-flex text-center justify-content-center ">
                             {% if event.away_team_name %}
                                 <p class="text-center team_name">{{ event.away_team_name }}</p>
                             {% else %}

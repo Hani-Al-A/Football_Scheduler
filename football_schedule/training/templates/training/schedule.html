@@ -20,7 +20,7 @@
         <form method="post" action="{% url 'sync_calendar' user.club.club_api_id %}">
             {% csrf_token %}
             <input type="hidden" name="timezone" id="timezone">
-            <button id="sync_button" class="btn btn-primary single_btn" type="submit">Sync real calendar</button>
+            <button id="sync_button" class="btn btn-primary single_btn" type="submit" >Sync real calendar</button>
         </form>
         {% endif %}
         <form method="post" action="{% url 'update_timezone' %}">

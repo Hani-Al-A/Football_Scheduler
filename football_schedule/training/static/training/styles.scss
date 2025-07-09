@@ -155,6 +155,11 @@ h1, h2, h3, h4, h5, h6{
     color: $text-color;
 }
 
+.table > :not(caption) > * > * {
+    padding: 1.1rem 0.5rem;
+    font-size: 22px;
+  }
+
 .mon, .tue, .wed, .thu, .fri, .sat, .sun, .noday{
     padding: 50px 50px;
     background-color: $theme-color;
@@ -339,6 +344,7 @@ h1, h2, h3, h4, h5, h6{
     background-color: transparent;
     border: none;
     display: none;
+    z-index: 3;
 }
 
 @media (max-width: 1000px){
@@ -372,7 +378,7 @@ h1, h2, h3, h4, h5, h6{
 
 
 
-@media (max-width: 650px){
+@media (max-width: 700px){
 
 
 
@@ -383,8 +389,8 @@ h1, h2, h3, h4, h5, h6{
 
     .img {
         .crest, .emblem{
-            width: 100%;
-            height: 110px;
+            min-width: 95px;
+            height: 100px;
             border-radius: 10px;
         }
 
@@ -410,13 +416,13 @@ h1, h2, h3, h4, h5, h6{
 @media (max-width: 550px) {
 
     .matchInfoHeader{
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .img {
         .crest, .emblem{
             min-width: 90px;
-            height: 105px;
+            height: 95px;
         }
 
         .flag{
@@ -430,7 +436,191 @@ h1, h2, h3, h4, h5, h6{
         
     }
     .crest_placeholder{
-        margin-right: 5vw;
+        margin-right: 2vw;
+    }
+}
+
+@media (max-width: 497px) {
+
+    .matchInfoHeader{
+        font-size: 15px;
+    }
+
+    .img {
+        .crest, .emblem{
+            min-width: 65px;
+            height: 75px;
+        }
+
+        .flag{
+            max-height: 80px;
+            max-width: 120px;
+            width: 180px;
+        }
+    }
+    .crest, .team_name{
+        max-width: 10vh;
+        font-size: 15px;
+    }
+    .crest_placeholder{
+        margin-right: 3vw;
+    }
+    #onPhone{
+        padding: 10px !important;
+        margin: 0 !important;
+    }
+
+    h1{
+        font-size: 28px;
+    }
+
+    h2{
+        font-size: 20px;
+    }
+    .form-control{
+        height: 70px;
+    }
+    .btn{
+        height: 40px;
+    }
+}
+
+@media (max-width: 443px) {
+
+    .matchInfoHeader{
+        font-size: 12px;
+    }
+
+    .img {
+        .crest, .emblem{
+            min-width: 60px;
+            height: 70px;
+        }
+
+        .flag{
+            max-height: 80px;
+            max-width: 120px;
+            width: 180px;
+        }
+    }
+    .crest, .team_name{
+        max-width: 10vh;
+        font-size: 13px;
+        
+    }
+    .crest_placeholder{
+        margin-right: 3vw;
+    }
+    #onPhone{
+        padding: 5px !important;
+        margin: 0 !important;
+    }
+    .btn{
+        font-size: 13px;
+    }
+
+    .table > :not(caption) > * > * {
+        padding: 1rem 0.3rem;
+        font-size: 18px;
+      }
+}
+
+@media (max-width: 420px) {
+
+    .matchInfoHeader{
+        font-size: 14px;
+    }
+
+    .img {
+        .crest, .emblem{
+            min-width: 60px;
+            height: 70px;
+        }
+
+        .flag{
+            max-height: 80px;
+            max-width: 120px;
+            width: 180px;
+        }
+    }
+    .crest, .team_name{
+        max-width: 10vh;
+        font-size: 13px;
+        
+    }
+    .crest_placeholder{
+        margin-right: 3vw;
+    }
+    #onPhone{
+        padding: 5px !important;
+        margin: 0 !important;
+    }
+}
+
+@media (max-width: 390px) {
+
+    .matchInfoHeader{
+        font-size: 12px;
+    }
+
+    .img {
+        .crest, .emblem{
+            min-width: 60px;
+            height: 65px;
+        }
+
+        .flag{
+            max-height: 80px;
+            max-width: 120px;
+            width: 180px;
+        }
+    }
+    .crest, .team_name{
+        max-width: 10vh;
+        font-size: 13px;
+        
+    }
+    .crest_placeholder{
+        margin-right: 3vw;
+    }
+    #onPhone{
+        padding: 5px !important;
+        margin: 0 !important;
+    }
+    h2{
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 370px) {
+
+    .matchInfoHeader{
+        font-size: 12px;
+    }
+
+    .img {
+        .crest, .emblem{
+            min-width: 60px;
+            height: 61px;
+        }
+
+        .flag{
+            max-height: 80px;
+            max-width: 120px;
+            width: 180px;
+        }
+    }
+    .crest, .team_name{
+        max-width: 10vh;
+        font-size: 13px;
+        
+    }
+    .crest_placeholder{
+        margin-right: 3vw;
+    }
+    #onPhone{
+        padding: 5px !important;
+        margin: 0 !important;
     }
 }
 
@@ -538,3 +728,8 @@ h1, h2, h3, h4, h5, h6{
         color: $text-color;
     }
 }
+
+.infront{
+    z-index: 2;
+  }
+
